@@ -1,7 +1,3 @@
-Aqui está um modelo de **README.md** para o projeto `fsw-donalds`:
-
----
-
 # FSW Donalds
 
 Este é um projeto desenvolvido com **Next.js** e **Prisma ORM**, utilizando **Tailwind CSS** e bibliotecas auxiliares para criação de uma aplicação web moderna. O projeto foi projetado para ser modular e flexível, com foco em uma boa experiência de usuário e performance.
