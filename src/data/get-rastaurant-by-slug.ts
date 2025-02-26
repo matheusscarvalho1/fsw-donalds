@@ -16,3 +16,13 @@ export const getRestaurantBySlug = async (slug: string) => {
 
   return restaurant;
 };
+
+export const getRestaurantById = async (productId: string) => {
+  const restaurant = await db.product.findUnique({
+    where: {
+      id: productId,
+    },
+  });
+
+  return restaurant;
+};
