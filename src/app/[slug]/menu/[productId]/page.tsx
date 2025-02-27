@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getRestaurantById } from "@/data/get-rastaurant-by-slug";
 
 import ProductHeader from "./_components/product-header";
+import ProductsDetails from "./_components/products-datails";
 
 interface ProductPageProps{
     params: Promise<{slug: string; productId: string;}>;
@@ -17,13 +18,16 @@ const ProductPage = async ({params}: ProductPageProps) => {
     if(!product) {
         return notFound();
     }
+
+    if(product.restaurant.slug.toUpperCase() !== slug.toUpperCase()){
+        return notFound();
+    }
+     
     return ( 
-    <>
+    <div className="flex h-full flex-col">
     <ProductHeader product={product} />
-    Product Page
-    {slug}
-    {productId}
-    </> 
+    <ProductsDetails product={product} />
+    </div>
     );
 }
  

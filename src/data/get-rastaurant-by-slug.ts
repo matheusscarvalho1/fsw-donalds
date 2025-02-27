@@ -22,6 +22,15 @@ export const getRestaurantById = async (productId: string) => {
     where: {
       id: productId,
     },
+    include: {
+      restaurant: {
+        select: {
+          avatarImageUrl: true,
+          name: true,
+          slug: true,
+        }
+      }
+    },
   });
 
   return restaurant;
