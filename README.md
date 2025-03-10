@@ -6,6 +6,7 @@ Este é um projeto desenvolvido com **Next.js** e **Prisma ORM**, utilizando **T
 
 - **[Next.js](https://nextjs.org)**: Framework React para construção de aplicações web com foco em renderização do lado do servidor e otimização de performance.
 - **[Prisma ORM](https://www.prisma.io)**: ORM moderno e rápido para Node.js, utilizado para interagir com bancos de dados de forma eficiente.
+- **[Docker](https://www.docker.com/)**: Plataforma para criar, implantar e executar aplicações em containers.
 - **[Tailwind CSS](https://tailwindcss.com)**: Framework CSS utilitário que permite estilizar rapidamente a interface de forma flexível.
 - **[Radix UI](https://www.radix-ui.com)**: Conjunto de componentes de UI acessíveis e de alta qualidade.
 - **[Lucide React](https://lucide.dev)**: Biblioteca de ícones para React, com ícones flexíveis e configuráveis.
@@ -33,14 +34,20 @@ cd fsw-donalds
 npm install
 ```
 
-### 3. Configure o Banco de Dados
+### 3. Suba o ambiente com Docker
 
-Antes de rodar a aplicação, você precisa configurar o banco de dados.
+Antes de rodar a aplicação, suba o ambiente com Docker:
+
+```bash
+docker-compose up -d
+```
+
+### 4. Configure o Banco de Dados
 
 - Crie um arquivo `.env` na raiz do projeto com a string de conexão do seu banco de dados:
 
 ```env
-DATABASE_URL="sua-string-de-conexao-prisma-aqui"
+DATABASE_URL="sua-string-de-conexao-docker-aqui"
 ```
 
 - Rode as migrações e seed do banco de dados:
@@ -50,7 +57,7 @@ npx prisma migrate dev
 npm run prisma:seed
 ```
 
-### 4. Rode o servidor de desenvolvimento
+### 5. Rode o servidor de desenvolvimento
 
 ```bash
 npm run dev
