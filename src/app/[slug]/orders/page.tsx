@@ -1,7 +1,7 @@
-//import { isValidCpf, removeCpfPunctuation } from "@/helpers/cpf";
+import { isValidCpf, removeCpfPunctuation } from "@/helpers/cpf";
 import { db } from "@/lib/prisma";
 
-//import CpfForm from "./_components/cpf-form";
+import CpfForm from "./_components/cpf-form";
 import OrderList from "./_components/order-list";
 
 interface OrdersPageProps {
@@ -13,13 +13,16 @@ interface OrdersPageProps {
 const OrdersPage = async ({ searchParams }: OrdersPageProps) => {
     const { cpf } = await searchParams;
 
-    // if (!cpf || !isValidCpf(cpf)) {
-    //     return <CpfForm />
-    // }
+    if (!cpf || !isValidCpf(cpf)) {
+        return <CpfForm />
+    }
 
     const orders = await db.order.findMany ({
+        orderBy: {
+            createdAt: "desc",
+        },
         where: {
-            customerCpf: cpf,
+            customerCpf: removeCpfPunctuation(cpf),
         },
         include: {
             restaurant: {
