@@ -130,7 +130,7 @@ Para acessar a aplicação, basta acessar a rota '/fsw-donalds'
 ![image](https://github.com/user-attachments/assets/626eaccc-7fed-4382-8bdd-a631fdeea697)
 - Ao finalizar o pedido, abrirá um dialog para adicionar o CPF do cliente para poder acompanhar o seu pedido posteriormente:
   ![image](https://github.com/user-attachments/assets/1ed2870d-41ee-4fc4-a3fe-28f845054055)
-- Gerando um CPF aleatório pelo ![4devs](https://www.4devs.com.br/gerador_de_cpf), adicionei o pedido em meu nome e o CPF gerado.
+- Gerando um CPF aleatório pelo **[4devs]([https://tailwindcss.com](https://www.4devs.com.br/gerador_de_cpf))**, adicionei o pedido em meu nome e o CPF gerado.
  ![image](https://github.com/user-attachments/assets/85e22a3d-0c0f-4adc-bf65-61c872523449)
 - Ao finalizar o pedido, o cliente será redirecionado para a página de acompanhamento com o status do pedido:
   ![image](https://github.com/user-attachments/assets/374e09ab-ae1f-4c7d-85f0-7900cdc66c6a)
