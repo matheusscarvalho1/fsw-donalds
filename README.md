@@ -1,5 +1,8 @@
 # FSW Donalds
 
+
+![image](https://github.com/user-attachments/assets/783df596-89b0-48ae-a759-c0f88f0c512d)
+
 Este é um projeto desenvolvido com **Next.js** e **Prisma ORM**, utilizando **Tailwind CSS** e bibliotecas auxiliares para criação de uma aplicação web moderna. O projeto foi projetado para ser modular e flexível, com foco em uma boa experiência de usuário e performance.
 
 ## 🛠️ Tecnologias Utilizadas
@@ -108,4 +111,5 @@ A aplicação estará disponível em `http://localhost:3000`.
 ## 🎯 Objetivo do Projeto
 
 Criar uma plataforma eficiente e escalável, utilizando as melhores práticas de desenvolvimento moderno para criar uma **experiência de usuário agradável**, garantindo **segurança, desempenho e flexibilidade**.
+
 
