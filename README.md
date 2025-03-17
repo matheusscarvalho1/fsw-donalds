@@ -104,7 +104,7 @@ Criar uma plataforma eficiente e escalável, utilizando as melhores práticas de
 
 ## 📱 Resultados
 Para acessar a aplicação, basta acessar a rota '/fsw-donalds'
- ### Desktop
+ ### Desktop / Mobile
  #### Menu
  - No menu é possível observar que a opção do pedido é passada via params para depois registrar na finalização do pedido se o cliente que comer no local ou levar o lanche:
  ![image](https://github.com/user-attachments/assets/c492e7d0-f573-47b9-9097-f7742d7bec65)
