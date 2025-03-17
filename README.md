@@ -2,7 +2,7 @@
 
 ![image](https://github.com/user-attachments/assets/5f0da6b3-32c8-4f0d-b31d-d8b77157212a)
 
-Este é um projeto desenvolvido com **Next.js** e **Prisma ORM**, utilizando **Tailwind CSS** e bibliotecas auxiliares para criação de uma aplicação web moderna. O projeto foi projetado para ser modular e flexível, com foco em uma boa experiência de usuário e performance.
+Este é um projeto desenvolvido com **Next.js** e **Prisma ORM**, utilizando **Tailwind CSS** e bibliotecas auxiliares para criação de uma aplicação web moderna. O projeto foi projetado para ser modular e flexível, com foco em uma boa experiência de usuário e performance, totalmente responsiva.
 
 ## 🛠️ Tecnologias Utilizadas
 
