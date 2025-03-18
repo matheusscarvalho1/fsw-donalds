@@ -123,6 +123,8 @@ Para acessar a aplicação, basta acessar a rota '/fsw-donalds'
 #### Carrinho
 - Ao escolher lanche e clicar nele, irá abrir a página ndo lanche com sua descrição e ingredientes para adicionar ao carrinho:
 ![image](https://github.com/user-attachments/assets/f6971076-a1f7-48dc-b262-a360097fe803)
+<hr>
+
 ![image](https://github.com/user-attachments/assets/5c8d5e2c-4f75-4962-b80f-50ab8fd8959f)
 - Com o lanche já adicionado ao carrinho, caso o cliente queira adicionar mais produtos ao carrinho irá aparecer um 'preview' para saber os itens que ja está no carrinho anteriormente:
   ![image](https://github.com/user-attachments/assets/bc50a723-438e-4905-97f9-dc1e476682b2)
@@ -134,13 +136,16 @@ Para acessar a aplicação, basta acessar a rota '/fsw-donalds'
  ![image](https://github.com/user-attachments/assets/85e22a3d-0c0f-4adc-bf65-61c872523449)
 - Ao finalizar o pedido, o cliente será redirecionado para a página de acompanhamento com o status do pedido:
   ![image](https://github.com/user-attachments/assets/374e09ab-ae1f-4c7d-85f0-7900cdc66c6a)
-- Ao voltar para a tela dos produtos é possível ver o pedido clicando no icone de pedidos no canto superior direito da tela, informando o CPF do pedido registrado anteriormente:
-![image](https://github.com/user-attachments/assets/d33c1c60-f63c-440c-a286-ff7f9ad11f73)
 - Registro do pedido no prisma studio 
 ![image](https://github.com/user-attachments/assets/9e6b60c3-e3c8-4b66-86b9-e18ab589cdbe)
+- Ao voltar para a tela dos produtos é possível ver o pedido clicando no icone de pedidos no canto superior direito da tela, informando o CPF do pedido registrado anteriormente e ir em confirmar:
+![image](https://github.com/user-attachments/assets/d33c1c60-f63c-440c-a286-ff7f9ad11f73)
+<hr>
 
+![image](https://github.com/user-attachments/assets/25247a9f-17c5-4d9f-aa7c-e509013b340b)
+<hr>
 
-
+![image](https://github.com/user-attachments/assets/b39768d0-ce7d-4249-be7f-d70b4304873c)
 
 
 ## Próximos passos
