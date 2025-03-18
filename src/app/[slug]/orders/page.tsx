@@ -5,42 +5,42 @@ import CpfForm from "./_components/cpf-form";
 import OrderList from "./_components/order-list";
 
 interface OrdersPageProps {
-    searchParams: Promise<{
-        cpf: string
-    }>
+  searchParams: Promise<{ cpf: string }>;
 }
 
 const OrdersPage = async ({ searchParams }: OrdersPageProps) => {
-    const { cpf } = await searchParams;
-
-    if (!cpf || !isValidCpf(cpf)) {
-        return <CpfForm />
-    }
-
-    const orders = await db.order.findMany ({
-        orderBy: {
-            createdAt: "desc",
+  const { cpf } = await searchParams;
+  if (!cpf) {
+    return <CpfForm />;
+  }
+  if (!isValidCpf(cpf)) {
+    return <CpfForm />;
+  }
+  const orders = await db.order.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    where: {
+      customerCpf: removeCpfPunctuation(cpf),
+    },
+    include: {
+      restaurant: {
+        select: {
+          name: true,
+          avatarImageUrl: true,
         },
-        where: {
-            customerCpf: removeCpfPunctuation(cpf),
-        },
+      },
+      orderProducts: {
         include: {
-            restaurant: {
-                select: {
-                    name: true,
-                    avatarImageUrl: true
+          product: true,
+        },
+      },
+    },
+  });
 
-                }
-            },
-            orderProducts: {
-                include: {
-                    product: true
-                }
-            }
-        }
-    })
+  console.log("CPF recebido:", cpf);
+console.log("CPF tratado (sem pontuação):", removeCpfPunctuation(cpf));
+  return <OrderList orders={orders} />;
+};
 
-    return <OrderList orders={orders}/>
-}
- 
 export default OrdersPage;
