@@ -150,7 +150,7 @@ Para acessar a aplicação, basta acessar a rota '/fsw-donalds'
 
 ## Próximos passos
 
-Seria interessante a implementação de uma integração com uma plataforma de pagamento feita por pix, para aumentar as opções para os clientes.
+Seria interessante a implementação de uma integração com uma plataforma de pagamento feita por pix, cartão de crédito e débito, para aumentar as opções para os clientes.
 
 ## Autor
 
