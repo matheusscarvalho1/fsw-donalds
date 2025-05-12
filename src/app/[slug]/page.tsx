@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { Button } from "@/components/ui/button";
 import { getRestaurantBySlug } from "@/data/get-rastaurant-by-slug";
 
 import ConsumptionMethodOption from "./_components/consumption-method-option";
@@ -13,6 +15,7 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
   const { slug } = await params;
 
   const restaurant = await getRestaurantBySlug(slug);
+  
 
   if (!restaurant) {
     return notFound();
@@ -51,8 +54,15 @@ const RestaurantPage = async ({ params }: RestaurantPageProps) => {
           imageUrl="/take_away.png"
           option="TAKEAWAY"
         />
+        <div className="col-span-2 flex justify-center pt-4">
+          <Link href={`/${slug}/orders`} passHref>
+            <Button variant="secondary" className="rounded-full">
+              Consultar pedidos por CPF
+            </Button>
+          </Link>
+        </div>
       </div>
-    </div>
+      </div>
   );
 };
 

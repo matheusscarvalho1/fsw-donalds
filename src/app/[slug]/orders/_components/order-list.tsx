@@ -3,7 +3,7 @@
 import { OrderStatus, Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -39,9 +39,13 @@ const getStatusLabel = (status: OrderStatus) => {
   return "";
 };
 
+
+
 const OrderList = ({ orders }: OrderListProps) => {
   const router = useRouter();
+  const { slug } = useParams<{ slug: string }>();
   const handleBackClick = () => router.back();
+  const handleHomePageClick = () => router.push(`/${slug}`)
   return (
     <div className="space-y-6 p-6">
       <Button
@@ -90,7 +94,12 @@ const OrderList = ({ orders }: OrderListProps) => {
             <p className="text-sm font-medium">{formatCurrency(order.total)}</p>
           </CardContent>
         </Card>
+        
+        
       ))}
+      <Button variant="destructive" className="rounded-full" onClick={handleHomePageClick}>
+                    Retornar a página inicial
+      </Button>
     </div>
   );
 };
