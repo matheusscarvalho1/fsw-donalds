@@ -1,6 +1,6 @@
 "use client";
 
-import { OrderStatus, Prisma } from "@prisma/client";
+import { consumptionMethod,OrderStatus, Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -39,6 +39,12 @@ const getStatusLabel = (status: OrderStatus) => {
   return "";
 };
 
+const getConsumptionMethod = (consumption: consumptionMethod) => {
+  if (consumption === "TAKEAWAY") return "Para levar";
+  if (consumption === "DINE_IN") return "Para comer aqui";
+  return "";
+};
+
 
 
 const OrderList = ({ orders }: OrderListProps) => {
@@ -67,6 +73,11 @@ const OrderList = ({ orders }: OrderListProps) => {
               className={`w-fit rounded-full px-2 py-1 text-xs font-semibold text-white ${([OrderStatus.IN_PREPARATION, OrderStatus.FINISHED] as OrderStatus[]).includes(order.status) ? "bg-green-500 text-white" : "bg-gray-200 text-gray-500"} `}
             >
               {getStatusLabel(order.status)}
+            </div>
+            <div
+              className={`w-fit rounded-full px-2 py-1 text-xs font-semibold text-white ${([consumptionMethod.DINE_IN, consumptionMethod.TAKEAWAY] as consumptionMethod[]).includes(order.consumptionMethod) ? "bg-blue-500 text-white" : ""} `}
+            >
+              {getConsumptionMethod(order.consumptionMethod)}
             </div>
             <div className="flex items-center gap-2">
               <div className="relative h-5 w-5">
