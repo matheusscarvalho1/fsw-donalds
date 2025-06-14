@@ -33,20 +33,20 @@ cd fsw-donalds
 npm install
 ```
 
-### 3. Suba o ambiente com Docker
-
-Antes de rodar a aplicação, suba o ambiente com Docker:
-
-```bash
-docker-compose up -d
-```
-
-### 4. Configure o Banco de Dados
+### 3. Configure o Banco de Dados
 
 - Crie um arquivo `.env` na raiz do projeto com a string de conexão do seu banco de dados com base nos dados da sua imagem do docker no arquivo `docker-compose.yml`:
 
 ```env
 DATABASE_URL="sua-string-de-conexao-docker-aqui"
+```
+
+### 4. Suba o ambiente com Docker
+
+Antes de rodar a aplicação, suba o ambiente com Docker:
+
+```bash
+docker-compose up -d
 ```
 
 - Rode as migrações e seed do banco de dados:
