@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_DOCKER_URL")
 }
 
 model Restaurant {
@@ -83,6 +83,10 @@ enum OrderStatus {
   PENDING
   IN_PREPARATION
   FINISHED
+  //Para quando o pagamento for confirmado com sucesso
+  PAYMENT_CONFIRMED
+  //Para quando o pagamento falhar
+  PAYMENT_FAILED
 }
 
 enum consumptionMethod {
