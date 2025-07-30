@@ -5,7 +5,10 @@ import Stripe from "stripe";
 import { db } from "@/lib/prisma";
 
 export async function POST(request: Request) {
-  if (!process.env.STRIPE_SECRET_KEY) {
+
+  try {
+
+    if (!process.env.STRIPE_SECRET_KEY) {
     throw new Error("Missing Stripe secret key");
   }
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
@@ -70,6 +73,11 @@ export async function POST(request: Request) {
       });
       revalidatePath(`/${order.restaurant.slug}/orders`);
     }
+
+  } catch (error) {
+    console.log(error)
+  }
+  
 
   return NextResponse.json({
     received: true,

@@ -1,9 +1,9 @@
 "use client";
 
-import { consumptionMethod,OrderStatus, Prisma } from "@prisma/client";
+import { OrderStatus, consumptionMethod, Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -45,13 +45,9 @@ const getConsumptionMethod = (consumption: consumptionMethod) => {
   return "";
 };
 
-
-
 const OrderList = ({ orders }: OrderListProps) => {
   const router = useRouter();
-  const { slug } = useParams<{ slug: string }>();
   const handleBackClick = () => router.back();
-  const handleHomePageClick = () => router.push(`/${slug}`)
   return (
     <div className="space-y-6 p-6">
       <Button
@@ -70,7 +66,7 @@ const OrderList = ({ orders }: OrderListProps) => {
         <Card key={order.id}>
           <CardContent className="space-y-4 p-5">
             <div
-              className={`w-fit rounded-full px-2 py-1 text-xs font-semibold text-white ${(([OrderStatus.PAYMENT_CONFIRMED, OrderStatus.FINISHED] as OrderStatus[]).includes(order.status)) ? "bg-green-500 text-white" : "bg-gray-400 text-white"} `}
+              className={`w-fit rounded-full px-2 py-1 text-xs font-semibold text-white ${([OrderStatus.PAYMENT_CONFIRMED, OrderStatus.FINISHED] as OrderStatus[]).includes(order.status) ? "bg-green-500 text-white" : "bg-gray-200 text-gray-500"} `}
             >
               {getStatusLabel(order.status)}
             </div>
@@ -105,12 +101,7 @@ const OrderList = ({ orders }: OrderListProps) => {
             <p className="text-sm font-medium">{formatCurrency(order.total)}</p>
           </CardContent>
         </Card>
-        
-        
       ))}
-      <Button variant="destructive" className="rounded-full" onClick={handleHomePageClick}>
-                    Retornar a página inicial
-      </Button>
     </div>
   );
 };
