@@ -2,7 +2,6 @@
 
 import { consumptionMethod } from "@prisma/client";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 import { removeCpfPunctuation } from "@/helpers/cpf";
 import { db } from "@/lib/prisma";

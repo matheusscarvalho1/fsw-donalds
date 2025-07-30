@@ -31,10 +31,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
+import { isValidCpf } from "../../../../helpers/cpf";
 import { createOrder } from "../actions/create-order";
 import { createStripeCheckout } from "../actions/create-stripe-checkout";
 import { CartContext } from "../contexts/cart";
-import { isValidCpf } from "../../../../helpers/cpf";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
