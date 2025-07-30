@@ -3,7 +3,7 @@
 import { consumptionMethod, OrderStatus, Prisma } from "@prisma/client";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { redirect, useParams, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -47,6 +47,7 @@ const getConsumptionMethod = (consumption: consumptionMethod) => {
 
 const OrderList = ({ orders }: OrderListProps) => {
   const router = useRouter();
+  const { slug } = useParams<{ slug: string }>();
   const handleBackClick = () => router.back();
   return (
     <div className="space-y-6 p-6">
@@ -102,7 +103,16 @@ const OrderList = ({ orders }: OrderListProps) => {
           </CardContent>
         </Card>
       ))}
+      <div>
+        <Button
+              className="w-full rounded-full"
+              onClick={() => redirect(`/${slug}`)}
+            >
+              Retornar para a página de pedidos
+            </Button>
+      </div>
     </div>
+    
   );
 };
 
