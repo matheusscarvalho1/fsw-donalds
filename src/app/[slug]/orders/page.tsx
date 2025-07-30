@@ -38,8 +38,6 @@ const OrdersPage = async ({ searchParams }: OrdersPageProps) => {
     },
   });
 
-  console.log("CPF recebido:", cpf);
-console.log("CPF tratado (sem pontuação):", removeCpfPunctuation(cpf));
   return <OrderList orders={orders} />;
 };
 
