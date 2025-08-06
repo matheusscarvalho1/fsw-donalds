@@ -34,7 +34,8 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
   const [selectedCategory, setSelectedCategory] =
     useState<MenuCategoriesWithProducts>(restaurant.menuCategories[0]);
 
-  const { products, totalPrice, totalQuantity, toggleCart } = useContext(CartContext)
+  const { products, totalPrice, totalQuantity, toggleCart } =
+    useContext(CartContext);
 
   const handleCategoryClick = (category: MenuCategoriesWithProducts) => {
     setSelectedCategory(category);
@@ -64,7 +65,7 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
         </div>
       </div>
       <ScrollArea className="w-full">
-        <div className="flex w-max space-x-4 px-4 pt-0 [&::-webkit-scrollbar]:hidden">
+        <div className="mb-3 flex w-max space-x-4 px-4 pt-0">
           {restaurant.menuCategories.map((category) => (
             <Button
               onClick={() => handleCategoryClick(category)}
@@ -79,8 +80,8 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
         </div>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-      <h3 className="px-5 font-semibold pt-2">
-        {selectedCategory.name} ({selectedCategory.products.length}) 
+      <h3 className="px-5 pt-2 font-semibold">
+        {selectedCategory.name} ({selectedCategory.products.length})
       </h3>
       <Products products={selectedCategory.products} />
 
@@ -98,7 +99,7 @@ const RestaurantCategories = ({ restaurant }: RestaurantCategoriesProps) => {
           <Button onClick={toggleCart}>Ver Sacola</Button>
           <CartSheet />
         </div>
-      ) }
+      )}
     </div>
   );
 };
