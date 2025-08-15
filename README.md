@@ -1,165 +1,178 @@
-# FSW Donalds
+# FSW Donalds 🍔
 
 ![image](https://github.com/user-attachments/assets/5f0da6b3-32c8-4f0d-b31d-d8b77157212a)
 
-Este é um projeto desenvolvido com **Next.js** e **Prisma ORM**, utilizando **Tailwind CSS** e bibliotecas auxiliares para criação de uma aplicação web moderna. O projeto foi projetado para ser modular e flexível, com foco em uma boa experiência de usuário e performance, totalmente responsiva.
+Uma aplicação web moderna de delivery de fast-food desenvolvida com **Next.js 15**, **Prisma ORM** e **Stripe** para pagamentos. O projeto oferece uma experiência completa de pedidos online com carrinho de compras, acompanhamento de pedidos e integração com gateway de pagamento.
 
-## 🛠️ Tecnologias Utilizadas
+## 🚀 Tecnologias Principais
 
-- **[Next.js](https://nextjs.org)**: Framework React para construção de aplicações web com foco em renderização do lado do servidor e otimização de performance.
-- **[Prisma ORM](https://www.prisma.io)**: ORM moderno e rápido para Node.js, utilizado para interagir com bancos de dados de forma eficiente.
-- **[Docker](https://www.docker.com/)**: Plataforma para criar, implantar e executar aplicações em containers.
-- **[Tailwind CSS](https://tailwindcss.com)**: Framework CSS utilitário que permite estilizar rapidamente a interface de forma flexível.
-- **[Radix UI](https://www.radix-ui.com)**: Conjunto de componentes de UI acessíveis e de alta qualidade.
-- **[shadcn UI / Lucide React](https://ui.shadcn.com)**: Biblioteca de ícones para React, com ícones flexíveis e configuráveis.
-- **[React Hook Form](https://react-hook-form.com/)**: Biblioteca para gerenciamento de formulários de forma eficiente e performática.
-- **[Zod](https://zod.dev/)**: Biblioteca para validação de schemas TypeScript-first.
-- **[React Number Format](https://github.com/s-yadav/react-number-format)**: Biblioteca para formatação de números e campos de entrada.
+- **[Next.js 15](https://nextjs.org)** - Framework React com App Router e Server Actions
+- **[Prisma ORM](https://www.prisma.io)** - ORM moderno para PostgreSQL
+- **[Stripe](https://stripe.com)** - Gateway de pagamento integrado
+- **[Tailwind CSS](https://tailwindcss.com)** - Framework CSS utilitário
+- **[shadcn/ui](https://ui.shadcn.com)** - Biblioteca de componentes reutilizáveis
+- **[Radix UI](https://www.radix-ui.com)** - Componentes acessíveis (base do shadcn/ui)
+- **[React Hook Form](https://react-hook-form.com/)** - Gerenciamento de formulários
+- **[Zod](https://zod.dev/)** - Validação de schemas TypeScript
+- **[Docker](https://www.docker.com/)** - Containerização com PostgreSQL
 
-## 🚀 Começando
+## 🏗️ Arquitetura e Estratégias
 
-Siga as instruções abaixo para configurar o ambiente de desenvolvimento e rodar o projeto localmente.
+### **Metodologias de Desenvolvimento**
 
-### 1. Clone o repositório
+- **Server-Side Rendering (SSR)** para melhor SEO e performance
+- **Server Actions** para operações de backend sem APIs REST
+- **Context API** para gerenciamento de estado global do carrinho
+- **TypeScript** para tipagem estática e melhor DX
+- **shadcn/ui** para componentes reutilizáveis e design system consistente
+- **Radix UI** como base para componentes acessíveis e customizáveis
+
+### **Estrutura do Banco de Dados**
+
+- **PostgreSQL** como banco principal
+- **Relacionamentos** entre Restaurante, Categorias, Produtos e Pedidos
+- **Enums** para status de pedidos e método de consumo
+- **Cascade deletion** para integridade referencial
+
+## 🛠️ Configuração do Ambiente
+
+### 1. Clone e Instale
 
 ```bash
 git clone https://github.com/matheusscarvalho1/fsw-donalds.git
 cd fsw-donalds
-```
-
-### 2. Instale as dependências
-
-```bash
 npm install
 ```
 
-### 3. Configure o Banco de Dados
-
-- Crie um arquivo `.env` na raiz do projeto com a string de conexão do seu banco de dados com base nos dados da sua imagem do docker no arquivo `docker-compose.yml`:
-
-```env
-DATABASE_URL="sua-string-de-conexao-docker-aqui"
-```
-
-### 4. Suba o ambiente com Docker
-
-Antes de rodar a aplicação, suba o ambiente com Docker:
+### 2. Configure o Banco de Dados
 
 ```bash
+# Suba o PostgreSQL com Docker
 docker-compose up -d
-```
 
-- Rode as migrações e seed do banco de dados:
+# Configure as variáveis de ambiente
+cp .env.example .env
+# Adicione: DATABASE_URL="postgresql://postgres:password@localhost:5432/app"
+# Adicione: STRIPE_SECRET_KEY="sua_chave_stripe"
 
-```bash
+# Execute as migrações e seed
 npx prisma migrate dev
 npx prisma db seed
 ```
 
-### 5. Rode o servidor de desenvolvimento
+### 3. Execute o Projeto
 
 ```bash
 npm run dev
 ```
 
-A aplicação estará disponível em `http://localhost:3000`.
+Acesse: `http://localhost:3000/fsw-donalds`
 
-## 🛠️ Scripts
+## 📱 Funcionalidades Principais
 
-- `dev`: Inicia o servidor de desenvolvimento.
-- `build`: Cria a versão otimizada para produção.
-- `start`: Inicia o servidor de produção.
-- `lint`: Executa o linter para garantir a consistência do código.
-- `prisma:seed`: Executa a seed do banco de dados usando o script definido em `prisma/seed.ts`.
+### **Menu Interativo**
 
-## 📚 Dependências
+- Navegação por categorias (Combos, Lanches, Fritas, Bebidas, Sobremesas)
+- Seleção de método de consumo (Dine-in/Takeaway)
+- Visualização detalhada de produtos com ingredientes
 
-### **Dependências Principais**
+### **Carrinho de Compras**
 
-- **[@hookform/resolvers](https://www.npmjs.com/package/@hookform/resolvers)**: Integração entre React Hook Form e bibliotecas de validação como Zod.
-- **[@prisma/client](https://www.npmjs.com/package/@prisma/client)**: Cliente para interagir com o banco de dados usando o Prisma ORM.
-- **[@radix-ui/react-dialog](https://www.radix-ui.com)**: Componente de modal acessível.
-- **[@radix-ui/react-label](https://www.radix-ui.com)**: Componente de label acessível.
-- **[@radix-ui/react-scroll-area](https://www.radix-ui.com)**: Componente de área de rolagem acessível.
-- **[lucide-react](https://lucide.dev)**: Biblioteca de ícones flexíveis para React.
-- **[react-hook-form](https://react-hook-form.com/)**: Gerenciamento de formulários eficiente.
-- **[react-number-format](https://github.com/s-yadav/react-number-format)**: Formatação de números.
-- **[zod](https://zod.dev/)**: Biblioteca para validação de schemas.
+- Adição/remoção de produtos
+- Controle de quantidades
+- Preview em tempo real
+- Cálculo automático de totais
 
-### **Dependências de Desenvolvimento**
+### **Sistema de Pedidos**
 
-- **[@eslint/eslintrc](https://www.npmjs.com/package/@eslint/eslintrc)**: Configuração do ESLint.
-- **[@types/node](https://www.npmjs.com/package/@types/node)**: Tipagem para Node.js.
-- **[@types/react](https://www.npmjs.com/package/@types/react)**: Tipagem para React.
-- **[@types/react-dom](https://www.npmjs.com/package/@types/react-dom)**: Tipagem para React DOM.
-- **[eslint](https://eslint.org)**: Linter para qualidade do código.
-- **[eslint-plugin-simple-import-sort](https://www.npmjs.com/package/eslint-plugin-simple-import-sort)**: Plugin para organizar importações.
-- **[prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)**: Plugin do Prettier para ordenar classes Tailwind.
-- **[ts-node](https://www.npmjs.com/package/ts-node)**: Executa código TypeScript diretamente.
-- **[typescript](https://www.typescriptlang.org)**: Superset do JavaScript para fornecer tipagem estática.
+- Validação de CPF
+- Acompanhamento de status em tempo real
+- Histórico de pedidos por CPF
+- Integração com Stripe para pagamentos
 
-## 🎯 Objetivo do Projeto
+### **Experiência do Usuário**
 
-Criar uma plataforma eficiente e escalável, utilizando as melhores práticas de desenvolvimento moderno para criar uma **experiência de usuário agradável**, garantindo **segurança, desempenho e flexibilidade**.
+- Interface responsiva (Desktop/Mobile)
+- Design system consistente com shadcn/ui
+- Notificações toast com Sonner
+- Loading states e feedback visual
+- Validação de formulários com Zod
+- Componentes acessíveis baseados em Radix UI
 
-## 📱 Resultados
-Para acessar a aplicação, basta acessar a rota '/fsw-donalds'
- ### Desktop / Mobile
- #### Menu
- - No menu é possível observar que a opção do pedido é passada via params para depois registrar na finalização do pedido se o cliente que comer no local ou levar o lanche:
- ![image](https://github.com/user-attachments/assets/c492e7d0-f573-47b9-9097-f7742d7bec65)
-- Além disso é possível ver as categorias do restaurante: 'Combos', 'Lanches', 'Fritas', 'Bebidas' e 'Sobremesas'
-- 'Combos'
+## 🎯 Resultados
+
+### **Desktop / Mobile**
+
+#### Menu Principal
+
+![image](https://github.com/user-attachments/assets/c492e7d0-f573-47b9-9097-f7742d7bec65)
+
+#### Categorias de Produtos
+
+- **Combos**
   ![image](https://github.com/user-attachments/assets/7f34f9c3-4512-446b-ab8e-e9a7b15e923e)
-- 'Lanches'
- ![image](https://github.com/user-attachments/assets/15ee9e81-b5ea-4888-b109-fa1d42374d60)
-- 'Fritas'
-  ![image](https://github.com/user-attachments/assets/af665eee-df68-4c51-ab5d-7c95e325d5a2)
-- 'Bebidas'
-  ![image](https://github.com/user-attachments/assets/d7ba9f98-9227-4bfd-9772-32e9f00a3eab)
-- 'Sobremesas'
- ![image](https://github.com/user-attachments/assets/26816600-321e-4e40-a33c-464b71a3b4ef)
 
-#### Carrinho
-- Ao escolher lanche e clicar nele, irá abrir a página ndo lanche com sua descrição e ingredientes para adicionar ao carrinho:
+- **Lanches**
+  ![image](https://github.com/user-attachments/assets/15ee9e81-b5ea-4888-b109-fa1d42374d60)
+
+- **Fritas**
+  ![image](https://github.com/user-attachments/assets/af665eee-df68-4c51-ab5d-7c95e325d5a2)
+
+- **Bebidas**
+  ![image](https://github.com/user-attachments/assets/d7ba9f98-9227-4bfd-9772-32e9f00a3eab)
+
+- **Sobremesas**
+  ![image](https://github.com/user-attachments/assets/26816600-321e-4e40-a33c-464b71a3b4ef)
+
+#### Detalhes do Produto
+
 ![image](https://github.com/user-attachments/assets/f6971076-a1f7-48dc-b262-a360097fe803)
-<hr>
+
+#### Carrinho e Checkout
 
 ![image](https://github.com/user-attachments/assets/5c8d5e2c-4f75-4962-b80f-50ab8fd8959f)
-- Com o lanche já adicionado ao carrinho, caso o cliente queira adicionar mais produtos ao carrinho irá aparecer um 'preview' para saber os itens que ja está no carrinho anteriormente:
-  ![image](https://github.com/user-attachments/assets/bc50a723-438e-4905-97f9-dc1e476682b2)
-- Adicionando duas sobremesas ao pedido:
+
+![image](https://github.com/user-attachments/assets/bc50a723-438e-4905-97f9-dc1e476682b2)
+
 ![image](https://github.com/user-attachments/assets/626eaccc-7fed-4382-8bdd-a631fdeea697)
-- Ao finalizar o pedido, abrirá um dialog para adicionar o CPF do cliente para poder acompanhar o seu pedido posteriormente:
-  ![image](https://github.com/user-attachments/assets/1ed2870d-41ee-4fc4-a3fe-28f845054055)
-- Gerando um CPF aleatório pelo **[4devs]([https://tailwindcss.com](https://www.4devs.com.br/gerador_de_cpf))**, adicionei o pedido em meu nome e o CPF gerado.
- ![image](https://github.com/user-attachments/assets/85e22a3d-0c0f-4adc-bf65-61c872523449)
-- Ao finalizar o pedido, o cliente será redirecionado para a página de acompanhamento com o status do pedido:
-  ![image](https://github.com/user-attachments/assets/374e09ab-ae1f-4c7d-85f0-7900cdc66c6a)
-- Registro do pedido no prisma studio 
+
+#### Finalização do Pedido
+
+![image](https://github.com/user-attachments/assets/1ed2870d-41ee-4fc4-a3fe-28f845054055)
+
+![image](https://github.com/user-attachments/assets/85e22a3d-0c0f-4adc-bf65-61c872523449)
+
+#### Acompanhamento de Pedidos
+
+![image](https://github.com/user-attachments/assets/374e09ab-ae1f-4c7d-85f0-7900cdc66c6a)
+
 ![image](https://github.com/user-attachments/assets/9e6b60c3-e3c8-4b66-86b9-e18ab589cdbe)
-- Ao voltar para a tela dos produtos é possível ver o pedido clicando no icone de pedidos no canto superior direito da tela, informando o CPF do pedido registrado anteriormente e ir em confirmar:
+
 ![image](https://github.com/user-attachments/assets/d33c1c60-f63c-440c-a286-ff7f9ad11f73)
-<hr>
 
 ![image](https://github.com/user-attachments/assets/25247a9f-17c5-4d9f-aa7c-e509013b340b)
-<hr>
 
 ![image](https://github.com/user-attachments/assets/b39768d0-ce7d-4249-be7f-d70b4304873c)
 
+## 🔧 Scripts Disponíveis
 
-## Próximos passos
+```bash
+npm run dev      # Servidor de desenvolvimento
+npm run build    # Build para produção
+npm run start    # Servidor de produção
+npm run lint     # Verificação de código
+```
 
-Seria interessante a implementação de uma integração com uma plataforma de pagamento feita por pix, cartão de crédito e débito, para aumentar as opções para os clientes.
+## 🚀 Próximos Passos
 
-## Autor
+- [ ] Integração com PIX
+- [ ] Sistema de cupons de desconto
+- [ ] Avaliações e reviews
+- [ ] Notificações push
+- [ ] Dashboard administrativo
 
-<b>Matheus de Souza Carvalho</b>
+## 👨‍💻 Desenvolvido por
 
-Linkedin:
-https://www.linkedin.com/in/matheusscarvalho/
+**Matheus Carvalho**
 
-E-mail:
-matheusdocarvalho@gmail.com
-
-
+LinkedIn: [@matheusscarvalho](https://www.linkedin.com/in/matheusscarvalho/)
