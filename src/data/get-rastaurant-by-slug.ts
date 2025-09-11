@@ -35,3 +35,13 @@ export const getRestaurantById = async (productId: string) => {
 
   return restaurant;
 };
+
+export const getSlugFromRestaurants = async () => {
+  const restaurantSlug = await db.restaurant.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return restaurantSlug;
+};
