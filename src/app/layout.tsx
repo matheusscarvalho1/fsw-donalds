@@ -13,8 +13,11 @@ const poppins = Poppins({
 }); 
 
 export const metadata: Metadata = {
-  title: "FSW Donalds",
-  description: "Bem vindo ao novo Donalds!",
+  title: "FSW Donalds - a sua rede de fast food favorita.",
+  description: "Bem vindo ao novo e favorito fast food da cidade!",
+  icons: {
+    icon: '/hamburguer.svg'
+  }
 };
 
 export default function RootLayout({
